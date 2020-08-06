@@ -4,4 +4,8 @@
 
 <p> <%= homeStartingContent %> </p>
 
+<% posts.forEach(post ==> { %>
+    <% console.log(post.title); %>
+<% }); %>
+
 <%- include("partials/footer") -%>
