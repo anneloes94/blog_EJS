@@ -13,11 +13,11 @@ const contactContent = "Scelerisque eleifend donec pretium vulputate sapien. Rho
 const posts = [
   {
     title: "Hello",
-    content: "fduiefhiesu sdifjosjfds soifjsoi"
+    content: "neque sodales ut. Mattis molestie a iaculis at erat pellentesque adipiscing. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Adipiscing elit ut aliquam purus sit amet luctus venenatis lectus fduiefhiesu sdifjosjfds soifjsoi"
   },
   {
     title: "Day 1",
-    content: " efioushjifuhseiuif sdgikfjusijsfd"
+    content: "Sit amet cursus sit amet dictum sit amet justo. Viverra tellus in hac habitasse. Imperdiet proin fermentum leo vel orci porta. Donec ultrices tincidunt arcu non sodales efioushjifuhseiuif sdgikfjusijsfd"
   }
 ]
 
@@ -49,14 +49,16 @@ app.get("/compose", function(req, res){
 
 app.get("/posts/:postTitle", function(req, res) {
   const requestedTitle = _.lowerCase(req.params.postTitle);
+
   posts.forEach(function(post) {
     const storedTitle = _.lowerCase(post.title)
-    if (requestedTitle === storedTitle) {
-      console.log("Match found!")
-    } else {
-      console.log("no")
-    }
 
+    if (requestedTitle === storedTitle) {
+      res.render("post", {
+        title: storedTitle,
+        content: post.content
+      })
+    }     
   })
 })
 
